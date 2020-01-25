@@ -8,4 +8,12 @@ class User < ApplicationRecord
             email: email
         }
     end
+
+    def can_modify_user?(user_id)
+        role == 'admin' || id.to_s == user_id.to_s
+    end
+
+    def is_admin?
+        role == 'admin'
+    end
 end
